@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANH YÊU EM</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #FFC0CB; /* Màu hồng */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        h1 {
+            position: absolute;
+            top: 10%; /* Đặt chữ cao hơn */
+            color: red; /* Màu đỏ */
+            font-size: 4rem; /* Chữ lớn hơn */
+        }
+
+        #flower-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .flower {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-image: url('https://cdn.medigoapp.com/product/qq_0a93030668.webp'); /* Hình bông hoa anh đào */
+            background-size: cover;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh);
+            }
+            100% {
+                transform: translateY(110vh);
+            }
+        }
+
+        #heart {
+            position: absolute;
+            top: 60%; /* Đặt trái tim thấp hơn */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px; /* Tăng kích thước trái tim */
+            height: 400px; /* Tăng kích thước trái tim */
+            background-image: url('https://firebasestorage.googleapis.com/v0/b/nhachay-43b11.appspot.com/o/Polish_20240627_000930793.png?alt=media&token=8680ebca-a276-4947-84c0-484191f4ba3f'); /* Hình trái tim */
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5rem;
+            color: orange;
+        }
+
+        @keyframes changeColor {
+            0% {
+                color: gold;
+            }
+            100% {
+                color: magenta; /* Màu hồng nhạt */
+            }
+        }
+
+        .changing-text {
+            animation: changeColor 0.7s infinite alternate;
+        }
+    </style>
+</head>
+<body>
+    <h1>ANH YÊU EM</h1>
+    <div id="heart" class="changing-text">😘🌷</div>
+    <div id="flower-container"></div>
+    <audio id="background-music" loop>
+        <source src="https://firebasestorage.googleapis.com/v0/b/nhachay-43b11.appspot.com/o/Y2meta.app%20-%20Nh%E1%BA%A1c%20meme%20l%C3%A3ng%20m%E1%BA%A1n%20ng%E1%BB%8Dt%20ng%C3%A0o%20chill%20chill%20_%20romantic%20sound%20edit%20(320%20kbps).mp3?alt=media&token=117a8f5f-0e22-43d8-ae90-0c5123dba69c" type="audio/mpeg">
+        Trình duyệt của bạn không hỗ trợ thẻ âm thanh.
+    </audio>
+    <script>
+        document.body.addEventListener('click', function() {
+            const audio = document.getElementById('background-music');
+            audio.play();
+        });
+
+        function createFlower() {
+            const flower = document.createElement('div');
+            flower.classList.add('flower');
+            flower.style.left = Math.random() * 100 + 'vw';
+            flower.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.getElementById('flower-container').appendChild(flower);
+
+            setTimeout(() => {
+                flower.remove();
+            }, 5000);
+        }
+
+        setInterval(createFlower, 300);
+
+        const texts = ["NGUYỄN HÂN♡", "KIM YẾN♡", "NGỌC CHANGG♡", "ĐỨC THẮNG♡", "CÁA BIỂN molly♡", "MEI♡", "HƯƠNG♡", "BỰA YẾN NHI♡", "M VY♡", "CATTIE♡", "HUYỀN DIỆP♡"];
+        let textIndex = 0;
+
+        function changeText() {
+            const heart = document.getElementById('heart');
+            heart.innerText = texts[textIndex];
+            textIndex = (textIndex + 1) % texts.length;
+        }
+
+        setInterval(changeText, 1100); // Thay đổi chữ mỗi 1.1 giây
+    </script>
+</body>
+</html>
